@@ -9,7 +9,8 @@
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("1. Create Contact \n2. Edit Contact \n3. Delete Contact \n4. Add Multiple Contact \n5. Exit");
+                Console.WriteLine("1. Create Contact \n2. Edit Contact \n3. Delete Contact \n4. Add Multiple Contact" +
+                    " \n5. Create Multiple Address Book \n6. Check for duplicate entry \n7. Exit ");
                 int select = Convert.ToInt32(Console.ReadLine());
                 switch (select)
                 {
@@ -39,6 +40,17 @@
                         flag = false;
                         break;
                     case 5:
+                        addressBook.Details();
+                        addressBook.DisplayAdressBook();
+                        flag = false;
+                        break;
+                    case 6:
+                        addressBook.Details();
+                        addressBook.DisplayAdressBook();
+                        addressBook.CheckDuplicateEntryOfAContact();
+                        flag = false;
+                        break;
+                    case 7:
                         flag = false;
                         Console.WriteLine("Exist");
                         break;
