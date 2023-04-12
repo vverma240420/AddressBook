@@ -9,65 +9,32 @@ namespace AddressBook
     public class AddressBooks
     {
         List<Contact> list = new List<Contact>();
-        public Dictionary<string, List<Contact>> contactDictionary = new Dictionary<string, List<Contact>>();
         Contact contact;
         public void Details()
         {
-            Console.WriteLine("Enter the Number of AddressBook do you want to make");
-            int numAddressBook = Convert.ToInt32(Console.ReadLine());
-            string addressBookName;
-            int num = 0;
-            while (num < numAddressBook)
+            Console.WriteLine("Enter the number of Contact want to add");
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("Enter addressbook name to add contacts");
-                addressBookName = Console.ReadLine();
-                Console.WriteLine("Enter the number of Contact want to add in {0} AddressBook", addressBookName);
-                int n = Convert.ToInt32(Console.ReadLine());
-                list = new List<Contact>();
-                for (int i = 0; i < n; i++)
-                {
-                    contact = new Contact();
-                    Console.WriteLine("Enter first name");
-                    contact.firstName = Console.ReadLine();
-                    Console.WriteLine("Enter last name");
-                    contact.lastName = Console.ReadLine();
-                    Console.WriteLine("Enter Address");
-                    contact.address = Console.ReadLine();
-                    Console.WriteLine("Enter City");
-                    contact.city = Console.ReadLine(); ;
-                    Console.WriteLine("Enter State");
-                    contact.state = Console.ReadLine();
-                    Console.WriteLine("Enter Zip code");
-                    contact.zip = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Enter Phone number");
-                    contact.phoneNumber = Convert.ToInt64(Console.ReadLine());
-                    Console.WriteLine("Enter Email");
-                    contact.email = Console.ReadLine();
-                    list.Add(contact);
-                    //Console.WriteLine(contact);
-                }
-                contactDictionary.Add(addressBookName, list);
-                num++;
-            }
-        }
-
-        public void DisplayAdressBook()
-        {
-            foreach (KeyValuePair<string, List<Contact>> keyValue in contactDictionary)
-            {
-                Console.WriteLine("AddressBook Name: " + keyValue.Key);
-                Console.WriteLine("\nDisplaying the person details\n");
-                foreach (Contact contact in keyValue.Value)
-                {
-                    Console.WriteLine("First Name:" + contact.firstName);
-                    Console.WriteLine("Last Name:" + contact.lastName);
-                    Console.WriteLine("Adress:" + contact.address);
-                    Console.WriteLine("City:" + contact.city);
-                    Console.WriteLine("Zip Code:" + contact.zip);
-                    Console.WriteLine("Phone Number:" + contact.phoneNumber);
-                    Console.WriteLine("Email:" + contact.email);
-                    Console.WriteLine("\n");
-                }
+                contact = new Contact();
+                Console.WriteLine("Enter first name");
+                contact.firstName = Console.ReadLine();
+                Console.WriteLine("Enter last name");
+                contact.lastName = Console.ReadLine();
+                Console.WriteLine("Enter Address");
+                contact.address = Console.ReadLine();
+                Console.WriteLine("Enter City");
+                contact.city = Console.ReadLine(); ;
+                Console.WriteLine("Enter State");
+                contact.state = Console.ReadLine();
+                Console.WriteLine("Enter Zip code");
+                contact.zip = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Phone number");
+                contact.phoneNumber = Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("Enter Email");
+                contact.email = Console.ReadLine();
+                list.Add(contact);
+                //Console.WriteLine(contact);
             }
         }
         public void Display()
