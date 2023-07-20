@@ -10,6 +10,8 @@ namespace AddressBook
     {
         public List<Contact> list = new List<Contact>();
         public Dictionary<string, List<Contact>> contactDictionary = new Dictionary<string, List<Contact>>();
+        public Dictionary<string, List<Contact>> cityDictionary = new Dictionary<string, List<Contact>>();
+        public Dictionary<string, List<Contact>> stateDictionary = new Dictionary<string, List<Contact>>();
         Contact contact;
         public void Details()
         {
@@ -212,6 +214,58 @@ namespace AddressBook
             if (!found)
             {
                 Console.WriteLine("No contacts found in the specified city or state.");
+            }
+        }
+
+        public void CreateCityDictionary()
+        {
+            foreach (KeyValuePair<string, List<Contact>> keyValue in contactDictionary)
+            {
+                cityDictionary = keyValue.Value
+                    .GroupBy(contact => contact.city)
+                    .ToDictionary(group => group.Key, group => group.ToList());
+            }
+        }
+
+        public void CreateStateDictionary()
+        {
+            foreach (KeyValuePair<string, List<Contact>> keyValue in contactDictionary)
+            {
+                stateDictionary = keyValue.Value
+                    .GroupBy(contact => contact.state)
+                    .ToDictionary(group => group.Key, group => group.ToList());
+            }
+        }
+
+        public void ViewPersonsByCity(string city)
+        {
+            if (cityDictionary.ContainsKey(city))
+            {
+                Console.WriteLine($"Persons in {city}:");
+                foreach (Contact contact in cityDictionary[city])
+                {
+                    Console.WriteLine(contact.firstName + " " + contact.lastName);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"No persons found in {city}.");
+            }
+        }
+
+        public void ViewPersonsByState(string state)
+        {
+            if (stateDictionary.ContainsKey(state))
+            {
+                Console.WriteLine($"Persons in {state}:");
+                foreach (Contact contact in stateDictionary[state])
+                {
+                    Console.WriteLine(contact.firstName + " " + contact.lastName);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"No persons found in {state}.");
             }
         }
 
