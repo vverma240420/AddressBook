@@ -10,7 +10,7 @@
             while (flag)
             {
                 Console.WriteLine("1. Create Contact \n2. Edit Contact \n3. Delete Contact \n4. Add Multiple Contact" +
-                    " \n5. Create Multiple Address Book \n6. Check for duplicate entry \n7. Exit ");
+                    " \n5. Create Multiple Address Book \n6. Check for duplicate entry\n7. Check Contact details by City Or State \n8. Exit ");
                 int select = Convert.ToInt32(Console.ReadLine());
                 switch (select)
                 {
@@ -51,6 +51,14 @@
                         flag = false;
                         break;
                     case 7:
+                        addressBook.Details();
+                        addressBook.DisplayAdressBook();
+                        Console.WriteLine("Enter the name of city or state which state or city contact details you want");
+                        string cityOrstate= Console.ReadLine();
+                        addressBook.SearchByCityOrState(cityOrstate);
+                        addressBook.Display();
+                        break;
+                    case 8:
                         flag = false;
                         Console.WriteLine("Exist");
                         break;
